@@ -1,0 +1,9 @@
+{%extends 'layout.html'%}
+{% block body %}
+<h1>Error Log</h1>
+<ul class="list-group">
+{% for error in errors %}
+    <li class="list-group-item"><a href="error/{{error.id}}">{{error.title}}</a></li>
+{%endfor%}
+</ul>
+{%endblock%}

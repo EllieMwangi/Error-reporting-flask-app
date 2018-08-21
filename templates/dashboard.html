@@ -1,0 +1,29 @@
+{% extends 'layout.html' %}
+{% block body%}
+    <h1>Dashboard <small>Welcome {{session.username}}</small></h1>
+    <a class="btn btn-success" href="/report_error">Report Error</a>
+    <hr>
+    <table class="table table-striped">
+        <tr>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Date</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for error in errors %}
+            <tr>
+                <td>{{error.id}}</td>
+                <td>{{error.title}}</td>
+                <td>{{error.create_date}}</td>
+                <td><a href="edit_error/{{error.id}}" class="btn btn-default pull-right">Edit</a> </td>
+                <td>
+                    <form action="{{url_for('delete_error', id=error.id)}}" method="post">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <input type="submit" value="Delete" class="btn btn-danger">
+                    </form>
+                </td>
+
+            </tr>
+        {% endfor %}    
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'layout.html'%}
+
+{% block body %}
+    <h1>{{error1.title}}</h1>
+    <small>Reported by {{error1.author}} on {{error1.create_date}} </small>
+    <hr>
+    <div>
+        {{error1.body | safe}}
+    </div>
+   
+{% endblock%}
